@@ -1,0 +1,43 @@
+site_name: C-Core-Compiler Docs
+site_description: Documentation for the C-Core-Compiler project
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: mkdocs
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - toc:
+      permalink: true
+
+nav:
+  - English:
+      - Home: en/index.md
+      - Project:
+          - How This Compiler Works: en/project/how-this-compiler-works.md
+          - Compiler Overview: en/project/compiler-overview.md
+          - Lexer and Tokens: en/project/lexer-and-tokens.md
+          - Parser and AST: en/project/parser-and-ast.md
+          - Semantic Analysis: en/project/semantic-analysis.md
+          - IR and Lowering: en/project/ir-and-lowering.md
+          - Optimizer: en/project/optimizer.md
+          - Backend and Toolchain: en/project/backend-and-toolchain.md
+          - Debugging the Pipeline: en/project/debugging-the-pipeline.md
+  - 中文:
+      - 首页: zh/index.md
+      - 项目文档:
+          - 这个编译器是怎么做的: zh/project/how-this-compiler-works.md
+          - 整体架构与两条编译路径: zh/project/compiler-overview.md
+          - 词法分析与 Token: zh/project/lexer-and-tokens.md
+          - 语法分析与 AST: zh/project/parser-and-ast.md
+          - 语义分析与符号表: zh/project/semantic-analysis.md
+          - IR 与 Lowering: zh/project/ir-and-lowering.md
+          - 优化器做了什么: zh/project/optimizer.md
+          - 后端与系统工具链: zh/project/backend-and-toolchain.md
+          - 如何调试整条编译流水线: zh/project/debugging-the-pipeline.md

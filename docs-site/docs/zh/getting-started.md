@@ -128,4 +128,6 @@ python3 -m c_core_compiler examples/hello.c --emit-c
 
 - 想理解项目原理：看 [项目文档](project/how-this-compiler-works.md)
 - 想理解仓库怎么组织：看 [仓库结构导览](project/repository-map.md)
+- 想系统理解命令行调试入口：看 [CLI 使用说明](user-guide/cli-guide.md)
+- 想理解各个示例分别在验证什么：看 [示例程序导览](user-guide/examples-guide.md)
 - 想理解怎么验证行为：看 [测试与验证](user-guide/testing-and-validation.md)

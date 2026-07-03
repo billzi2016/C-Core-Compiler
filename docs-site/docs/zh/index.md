@@ -20,5 +20,7 @@
 
 如果你想更快上手项目使用和仓库阅读，建议补看：
 
+- [CLI 使用说明](user-guide/cli-guide.md)
+- [示例程序导览](user-guide/examples-guide.md)
 - [测试与验证](user-guide/testing-and-validation.md)
 - [仓库结构导览](project/repository-map.md)

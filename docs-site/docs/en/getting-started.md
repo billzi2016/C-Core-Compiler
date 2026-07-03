@@ -128,4 +128,6 @@ Depending on your goal, continue with:
 
 - for architecture and implementation ideas: [How This Compiler Works](project/how-this-compiler-works.md)
 - for repository orientation: [Repository Map](project/repository-map.md)
+- for a stage-by-stage command-line inspection model: [CLI Guide](user-guide/cli-guide.md)
+- for understanding what each sample program is really teaching: [Examples Guide](user-guide/examples-guide.md)
 - for validation strategy: [Testing and Validation](user-guide/testing-and-validation.md)

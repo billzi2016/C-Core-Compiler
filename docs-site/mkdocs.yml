@@ -21,6 +21,8 @@ nav:
       - Home: en/index.md
       - Getting Started: en/getting-started.md
       - User Guide:
+          - CLI Guide: en/user-guide/cli-guide.md
+          - Examples Guide: en/user-guide/examples-guide.md
           - Testing and Validation: en/user-guide/testing-and-validation.md
       - Project:
           - How This Compiler Works: en/project/how-this-compiler-works.md
@@ -37,6 +39,8 @@ nav:
       - 首页: zh/index.md
       - 快速开始: zh/getting-started.md
       - 使用指南:
+          - CLI 使用说明: zh/user-guide/cli-guide.md
+          - 示例程序导览: zh/user-guide/examples-guide.md
           - 测试与验证: zh/user-guide/testing-and-validation.md
       - 项目文档:
           - 这个编译器是怎么做的: zh/project/how-this-compiler-works.md

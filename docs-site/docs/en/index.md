@@ -20,5 +20,7 @@ If you want the implementation broken down by stage, continue with:
 
 If you want faster orientation around usage and repository layout, also read:
 
+- [CLI Guide](user-guide/cli-guide.md)
+- [Examples Guide](user-guide/examples-guide.md)
 - [Testing and Validation](user-guide/testing-and-validation.md)
 - [Repository Map](project/repository-map.md)

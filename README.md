@@ -1,54 +1,54 @@
 # C-Core-Compiler
 
-`C-Core-Compiler` 是一个使用 Python 从零实现的受控 C 子集编译器项目。
+`C-Core-Compiler` is a controlled C subset compiler project implemented from scratch in Python.
 
-第一代版本的目标不是追求极致优化，而是先做出一条逻辑清晰、结构完整、可测试、可解释的编译链路。项目会把源代码依次转换为 Token、AST、IR，再生成一种规范化的后端 C 代码，最后调用系统工具链生成可执行文件。
+The first-generation goal is not extreme optimization. The priority is to build a compiler pipeline that is logically clear, structurally complete, testable, and explainable. The project transforms source code step by step into Tokens, AST, and IR, then generates normalized backend C code, and finally invokes the system toolchain to produce an executable.
 
-这个项目按 SDD 方式持续推进，目标不是做一次性演示代码，而是做一个结构清晰、测试完整、便于维护和演进的工程化编译器项目。第一代实现优先遵循工业项目常见的基本要求：分层明确、职责清楚、接口稳定、错误可定位、测试可回归。
+This project is developed continuously in an SDD-style workflow. The goal is not a one-off demo, but an engineering-oriented compiler project with clear structure, complete tests, and room for maintenance and evolution. The first generation follows common industrial baseline expectations first: clear layering, well-defined responsibilities, stable interfaces, traceable errors, and regression-friendly tests.
 
-这样设计的原因有两个：
+There are two main reasons behind this design:
 
-- 第一代优先保证可读性、可验证性和跨平台可执行能力
-- 后端先采用规范化 C 输出，便于在 macOS 和 Linux 上快速打通真实可执行物
+- The first generation prioritizes readability, verifiability, and cross-platform executability
+- The backend starts with normalized C output so that real executables can be produced quickly on both macOS and Linux
 
-## 第一代支持范围
+## First-Generation Supported Scope
 
-- `int` 类型
-- 全局变量声明
-- 局部变量声明
-- 函数定义
-- 参数传递
-- 函数调用
+- `int` type
+- Global variable declarations
+- Local variable declarations
+- Function definitions
+- Parameter passing
+- Function calls
 - `if / else`
 - `while`
 - `for`
 - `return`
-- 一元运算：`+ - !`
-- 二元运算：`+ - * / %`
-- 比较运算：`== != < <= > >=`
-- 逻辑运算：`&& ||`
+- Unary operators: `+ - !`
+- Binary operators: `+ - * / %`
+- Comparison operators: `== != < <= > >=`
+- Logical operators: `&& ||`
 
-## 当前已支持的扩展能力
+## Currently Supported Extended Capabilities
 
 - `char`
-- 字符字面量
-- 字符串字面量
-- 固定长度数组声明
-- 数组索引
-- 基础指针声明
-- `&` 取地址
-- `*` 解引用
+- Character literals
+- String literals
+- Fixed-length array declarations
+- Array indexing
+- Basic pointer declarations
+- Address-of via `&`
+- Dereference via `*`
 
-## 编译流程
+## Compilation Pipeline
 
-1. Lexer 将字符流拆成 Token
-2. Parser 将 Token 序列解析为 AST
-3. Semantic Analyzer 做符号与基本语义检查
-4. IR Builder 将 AST 降为三地址风格 IR
-5. Backend 将 IR 生成规范化 C 代码
-6. Toolchain Driver 调用 `clang` 或 `cc` 生成最终可执行文件
+1. The Lexer splits the character stream into Tokens
+2. The Parser converts the Token sequence into an AST
+3. The Semantic Analyzer performs symbol and basic semantic checks
+4. The IR Builder lowers the AST into three-address-style IR
+5. The Backend generates normalized C code from the IR
+6. The Toolchain Driver invokes `clang` or `cc` to produce the final executable
 
-## 快速开始
+## Quick Start
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -56,74 +56,78 @@ python3 -m c_core_compiler examples/hello.c -o build/hello
 ./build/hello
 ```
 
-如果你想直接看到标准输出结果，建议运行带 `_stdout` 后缀的示例：
+If you want to directly see standard output, it is recommended to run examples with the `_stdout` suffix:
 
 ```bash
 python3 -m c_core_compiler examples/fib_stdout.c -o build/fib_stdout
 ./build/fib_stdout
 ```
 
-如果你想看“一眼就知道对不对”的展示型输出，建议运行完整序列版本：
+If you want a visually obvious demo output, the full sequence example is a good starting point:
 
 ```bash
 python3 -m c_core_compiler examples/fib_sequence_stdout.c -o build/fib_sequence_stdout
 ./build/fib_sequence_stdout
 ```
 
-## `return` 与 `stdout` 的区别
+## The Difference Between `return` and `stdout`
 
-这个项目里的示例分成两类，目的不同：
+Examples in this project are divided into two categories with different purposes:
 
-- `return` 型示例：通过进程退出码表达结果，更适合做编译器正确性验证、脚本检查和自动化测试
-- `stdout` 型示例：通过标准输出直接打印结果，更适合给人看，也更适合公开展示
+- `return`-style examples:
+  - Express the result through the process exit code
+  - Better suited for compiler correctness checks, scripts, and automated tests
+- `stdout`-style examples:
+  - Print the result directly to standard output
+  - Better suited for humans to read and for public demonstrations
 
-对应到构建结果目录就是：
+That maps to the build result directories like this:
 
-- `build/results_return/`：重点看 `exit.txt`
-- `build/results_stdout/`：重点看 `stdout.txt`
+- `build/results_return/`: mainly inspect `exit.txt`
+- `build/results_stdout/`: mainly inspect `stdout.txt`
 
-例如：
+For example:
 
-- `fib.c` 的结果是 `return fib(6);`，所以退出码是 `8`
-- `fib_sequence_stdout.c` 会把 `1 1 2 3 5 8 13` 按行打印出来，因此更适合直接展示
+- The result of `fib.c` is `return fib(6);`, so the exit code is `8`
+- `fib_sequence_stdout.c` prints `1 1 2 3 5 8 13` line by line, so it is more suitable for direct presentation
 
-## 常用命令
+## Common Commands
 
-输出 Token：
+Emit Tokens:
 
 ```bash
 python3 -m c_core_compiler examples/hello.c --emit-tokens
 ```
 
-输出 AST：
+Emit AST:
 
 ```bash
 python3 -m c_core_compiler examples/hello.c --emit-ast
 ```
 
-输出 IR：
+Emit IR:
 
 ```bash
 python3 -m c_core_compiler examples/hello.c --emit-ir
 ```
 
-输出后端代码：
+Emit backend code:
 
 ```bash
 python3 -m c_core_compiler examples/hello.c --emit-c
 ```
 
-兼容保留参数：
+Compatibility-preserved option:
 
 ```bash
 python3 -m c_core_compiler examples/hello.c --emit-asm
 ```
 
-第一代中，`--emit-asm` 会输出当前后端生成的规范化 C 代码。这是为了保留统一的调试入口，后续如果替换为原生汇编后端，该参数可以继续沿用。
+In the first generation, `--emit-asm` outputs the normalized C code generated by the current backend. This preserves a consistent debugging entry point. If the backend is later replaced with a native assembly backend, the same option can continue to be used.
 
-## 示例运行命令
+## Example Run Commands
 
-### 基础示例
+### Basic Examples
 
 `hello.c`
 
@@ -181,7 +185,7 @@ python3 -m c_core_compiler examples/string_demo.c -o build/string_demo
 ./build/string_demo
 ```
 
-### 带标准输出的示例
+### Examples with Standard Output
 
 `hello_stdout.c`
 
@@ -246,9 +250,9 @@ python3 -m c_core_compiler examples/string_demo_stdout.c -o build/string_demo_st
 ./build/string_demo_stdout
 ```
 
-## 批量运行全部示例
+## Run All Examples in Batch
 
-批量编译并运行全部基础示例，并把结果分别保存到 `build/results_return/<示例名>/`：
+Batch-compile and run all basic examples, then save the results under `build/results_return/<example_name>/`:
 
 ```bash
 mkdir -p build/results_return
@@ -264,7 +268,7 @@ for f in examples/*.c; do
 done
 ```
 
-批量编译并运行全部带标准输出的示例，并把结果分别保存到 `build/results_stdout/<示例名>/`：
+Batch-compile and run all examples with standard output, then save the results under `build/results_stdout/<example_name>/`:
 
 ```bash
 mkdir -p build/results_stdout
@@ -277,58 +281,58 @@ for f in examples/*_stdout.c; do
 done
 ```
 
-## 示例结果文件
+## Example Result Files
 
-这里有一个很重要的区别：
+There is an important distinction here:
 
 - `return`
-  - 表示程序退出码
-  - 更适合做验证型示例
-  - 适合测试“程序最终算出来的值对不对”
+  - Represents the process exit code
+  - Better suited for verification-oriented examples
+  - Better for testing whether the final computed value is correct
 
 - `stdout`
-  - 表示程序打印到标准输出的内容
-  - 更适合做展示型示例
-  - 适合直接展示“程序运行后给人看的结果是什么”
+  - Represents what the program prints to standard output
+  - Better suited for presentation-oriented examples
+  - Better for directly showing what a person sees after the program runs
 
-因此：
+Therefore:
 
-- `build/results_return/` 主要看退出码
-- `build/results_stdout/` 主要看标准输出
+- `build/results_return/` is mainly about exit codes
+- `build/results_stdout/` is mainly about standard output
 
-基础示例运行结果保存在：
+Basic example run results are stored in:
 
 - `build/results_return/`
-- 每个示例一个子目录，例如：`build/results_return/factorial/`
-- 总表：`build/results_return/run_results.txt`
+- One subdirectory per example, for example: `build/results_return/factorial/`
+- Summary table: `build/results_return/run_results.txt`
 
-带标准输出的示例运行结果保存在：
+Standard-output example run results are stored in:
 
 - `build/results_stdout/`
-- 每个示例一个子目录，例如：`build/results_stdout/fib_sequence_stdout/`
-- 总表：`build/results_stdout/run_results.txt`
+- One subdirectory per example, for example: `build/results_stdout/fib_sequence_stdout/`
+- Summary table: `build/results_stdout/run_results.txt`
 
-如果你想看最适合公开展示的结果，优先看：
+If you want the most presentation-friendly result, prioritize:
 
 - `examples/fib_sequence_stdout.c`
-- 结果文件：`build/results_stdout/fib_sequence_stdout/stdout.txt`
+- Result file: `build/results_stdout/fib_sequence_stdout/stdout.txt`
 
-## 目录说明
+## Directory Notes
 
-- `src/c_core_compiler/`：编译器实现
-- `tests/`：单元测试、快照测试与端到端测试
-- `examples/`：用于演示和回归的示例程序
-- `PRD.md`：项目范围与目标
-- `TASKS.md`：一期、二期任务清单
-- `ARCHITECTURE.md`：模块设计与数据流
-- `TESTING.md`：测试策略与覆盖说明
-- `CONTRIBUTING.md`：协作与提交规范
-- `DEVELOPMENT.md`：开发流程与模块说明
-- `RELEASE.md`：版本摘要与限制
-- `EXAMPLES.md`：示例说明与常用命令
+- `src/c_core_compiler/`: compiler implementation
+- `tests/`: unit tests, snapshot tests, and end-to-end tests
+- `examples/`: demonstration and regression example programs
+- `PRD.md`: project scope and goals
+- `TASKS.md`: phase-one and phase-two task lists
+- `ARCHITECTURE.md`: module design and data flow
+- `TESTING.md`: testing strategy and coverage notes
+- `CONTRIBUTING.md`: collaboration and commit conventions
+- `DEVELOPMENT.md`: development workflow and module notes
+- `RELEASE.md`: version summary and limitations
+- `EXAMPLES.md`: example notes and common commands
 
-## 致谢
+## Acknowledgements
 
-感谢《编译原理》这本书，它帮助我建立了更系统的编译器知识框架。
+Thanks to the book *Compilers: Principles, Techniques, and Tools* for helping me build a more systematic compiler knowledge framework.
 
-感谢 `https://pandolia.net/tinyc/`，它让我对编译原理有了更深入的实践性理解，也帮助我更清楚地思考如何把编译流程拆成可实现、可验证、可持续迭代的工程结构。
+Thanks to `https://pandolia.net/tinyc/`, which gave me a more hands-on understanding of compiler principles and helped me think more clearly about how to break a compiler pipeline into an engineering structure that is implementable, verifiable, and sustainable to iterate on.

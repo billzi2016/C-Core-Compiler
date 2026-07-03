@@ -19,9 +19,13 @@ markdown_extensions:
 nav:
   - English:
       - Home: en/index.md
+      - Getting Started: en/getting-started.md
+      - User Guide:
+          - Testing and Validation: en/user-guide/testing-and-validation.md
       - Project:
           - How This Compiler Works: en/project/how-this-compiler-works.md
           - Compiler Overview: en/project/compiler-overview.md
+          - Repository Map: en/project/repository-map.md
           - Lexer and Tokens: en/project/lexer-and-tokens.md
           - Parser and AST: en/project/parser-and-ast.md
           - Semantic Analysis: en/project/semantic-analysis.md
@@ -31,9 +35,13 @@ nav:
           - Debugging the Pipeline: en/project/debugging-the-pipeline.md
   - 中文:
       - 首页: zh/index.md
+      - 快速开始: zh/getting-started.md
+      - 使用指南:
+          - 测试与验证: zh/user-guide/testing-and-validation.md
       - 项目文档:
           - 这个编译器是怎么做的: zh/project/how-this-compiler-works.md
           - 整体架构与两条编译路径: zh/project/compiler-overview.md
+          - 仓库结构导览: zh/project/repository-map.md
           - 词法分析与 Token: zh/project/lexer-and-tokens.md
           - 语法分析与 AST: zh/project/parser-and-ast.md
           - 语义分析与符号表: zh/project/semantic-analysis.md

@@ -15,6 +15,7 @@
 
 如果你想看更系统的项目文档，可以直接从这里进入：
 
+- 文档站点：[https://billzi2016.github.io/C-Core-Compiler/](https://billzi2016.github.io/C-Core-Compiler/)
 - 文档站点目录：[`docs-site/`](docs-site/)
 - 中文文档首页：[`docs-site/docs/zh/index.md`](docs-site/docs/zh/index.md)
 - 编译器实现总览：[`docs-site/docs/zh/project/how-this-compiler-works.md`](docs-site/docs/zh/project/how-this-compiler-works.md)

@@ -15,6 +15,7 @@ There are two main reasons behind this design:
 
 If you want a more structured documentation entry, start here:
 
+- Documentation site: [https://billzi2016.github.io/C-Core-Compiler/](https://billzi2016.github.io/C-Core-Compiler/)
 - Documentation site directory: [`docs-site/`](docs-site/)
 - English docs home: [`docs-site/docs/en/index.md`](docs-site/docs/en/index.md)
 - Compiler implementation overview: [`docs-site/docs/en/project/how-this-compiler-works.md`](docs-site/docs/en/project/how-this-compiler-works.md)

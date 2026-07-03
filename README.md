@@ -18,6 +18,8 @@ If you want a more structured documentation entry, start here:
 - Documentation site directory: [`docs-site/`](docs-site/)
 - English docs home: [`docs-site/docs/en/index.md`](docs-site/docs/en/index.md)
 - Compiler implementation overview: [`docs-site/docs/en/project/how-this-compiler-works.md`](docs-site/docs/en/project/how-this-compiler-works.md)
+- GitHub Actions workflow page: [docs workflow on GitHub](https://github.com/billzi2016/C-Core-Compiler/actions/workflows/docs.yml)
+- GitHub Actions workflow source: [`.github/workflows/docs.yml`](https://github.com/billzi2016/C-Core-Compiler/blob/main/.github/workflows/docs.yml)
 
 If you want the project explained by compiler stage, continue with:
 

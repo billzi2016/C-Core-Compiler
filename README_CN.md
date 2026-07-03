@@ -18,6 +18,8 @@
 - 文档站点目录：[`docs-site/`](docs-site/)
 - 中文文档首页：[`docs-site/docs/zh/index.md`](docs-site/docs/zh/index.md)
 - 编译器实现总览：[`docs-site/docs/zh/project/how-this-compiler-works.md`](docs-site/docs/zh/project/how-this-compiler-works.md)
+- GitHub Actions 工作流页面：[docs workflow on GitHub](https://github.com/billzi2016/C-Core-Compiler/actions/workflows/docs.yml)
+- GitHub Actions 工作流源码：[`\.github/workflows/docs.yml`](https://github.com/billzi2016/C-Core-Compiler/blob/main/.github/workflows/docs.yml)
 
 如果你想按编译阶段逐步阅读，推荐继续看：
 

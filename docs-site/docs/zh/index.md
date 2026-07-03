@@ -6,6 +6,8 @@
 
 - [快速开始](getting-started.md)
 - [这个编译器是怎么做的](project/how-this-compiler-works.md)
+- [docs workflow on GitHub](https://github.com/billzi2016/C-Core-Compiler/actions/workflows/docs.yml)
+- [工作流源码文件](https://github.com/billzi2016/C-Core-Compiler/blob/main/.github/workflows/docs.yml)
 
 如果你想按编译阶段逐步阅读，可以继续看：
 

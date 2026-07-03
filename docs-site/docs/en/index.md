@@ -6,6 +6,8 @@ Start here if you want the high-level explanation first:
 
 - [Getting Started](getting-started.md)
 - [How This Compiler Works](project/how-this-compiler-works.md)
+- [Docs workflow on GitHub](https://github.com/billzi2016/C-Core-Compiler/actions/workflows/docs.yml)
+- [Workflow source file](https://github.com/billzi2016/C-Core-Compiler/blob/main/.github/workflows/docs.yml)
 
 If you want the implementation broken down by stage, continue with:
 

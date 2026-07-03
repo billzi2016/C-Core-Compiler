@@ -1,5 +1,15 @@
 # Release Notes
 
+## Documentation
+
+Project documentation is now organized under [`docs-site/`](docs-site/).
+
+Useful entry points:
+
+- Chinese docs home: [`docs-site/docs/zh/index.md`](docs-site/docs/zh/index.md)
+- English docs home: [`docs-site/docs/en/index.md`](docs-site/docs/en/index.md)
+- Compiler overview: [`docs-site/docs/zh/project/how-this-compiler-works.md`](docs-site/docs/zh/project/how-this-compiler-works.md)
+
 ## v0.3.0
 
 当前版本具备以下能力：

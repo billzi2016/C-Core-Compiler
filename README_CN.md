@@ -11,6 +11,25 @@
 - 第一代优先保证可读性、可验证性和跨平台可执行能力
 - 后端先采用规范化 C 输出，便于在 macOS 和 Linux 上快速打通真实可执行物
 
+## 项目文档
+
+如果你想看更系统的项目文档，可以直接从这里进入：
+
+- 文档站点目录：[`docs-site/`](docs-site/)
+- 中文文档首页：[`docs-site/docs/zh/index.md`](docs-site/docs/zh/index.md)
+- 编译器实现总览：[`docs-site/docs/zh/project/how-this-compiler-works.md`](docs-site/docs/zh/project/how-this-compiler-works.md)
+
+如果你想按编译阶段逐步阅读，推荐继续看：
+
+- [`整体架构与两条编译路径`](docs-site/docs/zh/project/compiler-overview.md)
+- [`词法分析与 Token`](docs-site/docs/zh/project/lexer-and-tokens.md)
+- [`语法分析与 AST`](docs-site/docs/zh/project/parser-and-ast.md)
+- [`语义分析与符号表`](docs-site/docs/zh/project/semantic-analysis.md)
+- [`IR 与 Lowering`](docs-site/docs/zh/project/ir-and-lowering.md)
+- [`优化器做了什么`](docs-site/docs/zh/project/optimizer.md)
+- [`后端与系统工具链`](docs-site/docs/zh/project/backend-and-toolchain.md)
+- [`如何调试整条编译流水线`](docs-site/docs/zh/project/debugging-the-pipeline.md)
+
 ## 第一代支持范围
 
 - `int` 类型

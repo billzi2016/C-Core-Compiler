@@ -8,8 +8,6 @@ repo_name: billzi2016/C-Core-Compiler
 theme:
   name: material
   language: en
-  logo: material/function-variant
-  favicon: material/function-variant
   font:
     text: false
     code: false

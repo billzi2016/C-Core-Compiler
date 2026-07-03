@@ -4,14 +4,14 @@
 
 很多编译器项目的痛点是：你只能看到“最后成功还是失败”，中间发生了什么不透明。
 
-这个项目的一个优点是，它把多层中间结果都暴露出来了。这样你可以问得更精确：
+这个项目有个挺大的优点：它把好几层中间结果都亮出来了。这样你排错时就不用一上来只会问“为什么最后错了”，而是能问得更准：
 
 - 是 Lexer 切错了 Token 吗
 - 是 Parser 把结构解析错了吗
 - 是 IR 展开有问题吗
 - 是后端生成结果不对吗
 
-这对学习和排错都非常重要。
+这对学习和排错都很值钱，因为编译器最怕的就是所有问题最后都挤成一个“运行结果不对”。
 
 ## 最常用的几个观察入口
 
@@ -21,7 +21,7 @@
 python3 -m c_core_compiler input.c --emit-tokens
 ```
 
-适合排查：
+适合先看：
 
 - 字面量是否被正确识别
 - 注释是否被正确跳过
@@ -33,7 +33,7 @@ python3 -m c_core_compiler input.c --emit-tokens
 python3 -m c_core_compiler input.c --emit-ast
 ```
 
-适合排查：
+适合先看：
 
 - 表达式优先级是否正确
 - `if / while / for` 结构是否正确挂接
@@ -45,7 +45,7 @@ python3 -m c_core_compiler input.c --emit-ast
 python3 -m c_core_compiler input.c --emit-ir
 ```
 
-适合排查：
+适合先看：
 
 - 控制流是否被正确展开
 - 临时变量是否合理
@@ -57,7 +57,7 @@ python3 -m c_core_compiler input.c --emit-ir
 python3 -m c_core_compiler input.c --emit-ir-dot
 ```
 
-适合排查：
+适合先看：
 
 - 条件分支走向
 - 循环结构
@@ -69,7 +69,7 @@ python3 -m c_core_compiler input.c --emit-ir-dot
 python3 -m c_core_compiler input.c --emit-c
 ```
 
-适合排查：
+适合先看：
 
 - 后端最终生成了什么
 - 程序是走 IR Backend 还是 AST Backend
@@ -84,7 +84,7 @@ python3 -m c_core_compiler input.c --emit-c
 3. 如果是基础 `int` 子集，再看 `--emit-ir`
 4. 最后看 `--emit-c`
 
-这样能快速缩小问题到底出在哪一层。
+这样查的好处是，不会一上来就把所有锅都甩给“编译器出问题了”，而是能很快把问题圈到某一层。
 
 ## 怎么判断自己走的是哪条编译路径
 
@@ -93,13 +93,13 @@ python3 -m c_core_compiler input.c --emit-c
 - 如果输出了真实 IR 指令，说明你在走 IR 路径
 - 如果 IR 显示这是高级特性程序，或者最终 C 明显保留了数组、指针、字符串等高层结构，那通常是在走 AST Backend 路径
 
-这点很重要，因为不同路径的排查重点不一样。
+这点很要命，因为两条路径看的东西不一样。你如果连自己走哪条路都没搞清楚，后面很容易越查越偏。
 
 ## 为什么中间文件也值得看
 
 在真正构建可执行文件时，项目会写出 `.generated.c` 中间文件。
 
-这个文件对排错非常有帮助，因为它能回答一个关键问题：
+这个文件对排错特别有用，因为它能帮你分清一个很关键的问题：
 
 - 是编译器前面就生成错了，还是系统工具链在后面编译时失败了
 
@@ -113,4 +113,4 @@ python3 -m c_core_compiler input.c --emit-c
 - 不要忽略自己到底走的是 IR 路径还是 AST Backend 路径
 - 不要把词法、语法、语义错误都混在一起看
 
-编译器调试最有效的方法，几乎永远是分层定位。
+编译器调试最有效的方法，基本永远都是分层定位。别上来就扑最终结果，那样最容易把自己绕进去。

@@ -11,6 +11,26 @@ There are two main reasons behind this design:
 - The first generation prioritizes readability, verifiability, and cross-platform executability
 - The backend starts with normalized C output so that real executables can be produced quickly on both macOS and Linux
 
+## Project Documentation
+
+If you want a more structured documentation entry, start here:
+
+- Documentation site directory: [`docs-site/`](docs-site/)
+- English docs home: [`docs-site/docs/en/index.md`](docs-site/docs/en/index.md)
+- Compiler implementation overview: [`docs-site/docs/en/project/how-this-compiler-works.md`](docs-site/docs/en/project/how-this-compiler-works.md)
+
+If you want the project explained by compiler stage, continue with:
+
+- [`Architecture Overview and the Two Compilation Paths`](docs-site/docs/en/project/compiler-overview.md)
+- [`Repository Map`](docs-site/docs/en/project/repository-map.md)
+- [`Lexing and Tokens`](docs-site/docs/en/project/lexer-and-tokens.md)
+- [`Parsing and the AST`](docs-site/docs/en/project/parser-and-ast.md)
+- [`Semantic Analysis and the Symbol Table`](docs-site/docs/en/project/semantic-analysis.md)
+- [`IR and Lowering`](docs-site/docs/en/project/ir-and-lowering.md)
+- [`Backend and System Toolchain`](docs-site/docs/en/project/backend-and-toolchain.md)
+- [`CLI Guide`](docs-site/docs/en/user-guide/cli-guide.md)
+- [`Examples Guide`](docs-site/docs/en/user-guide/examples-guide.md)
+
 ## First-Generation Supported Scope
 
 - `int` type
